@@ -1,17 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
-import { StatusBar } from "react-native";
+import React, { useState } from 'react';
+import { View, Button, StatusBar, StyleSheet } from 'react-native';
 
 export default function App() {
+  const [hidden, setHidden] = useState(false);
+
   return (
     <View style={styles.container}>
       <StatusBar
+        backgroundColor="#007BFF"
         barStyle="dark-content"
-        hidden={false}
-        backgroundColor="#1c70f8ff"
-        translucent={false}
-        networkActivityIndicatorVisible={true}
+        hidden={hidden}
+        animated={true}
       />
-      <Text>Barras de status</Text>
+      <Button
+        title={hidden ? "Mostrar StatusBar" : "Ocultar StatusBar"}
+        onPress={() => setHidden(!hidden)}
+      />
     </View>
   );
 }
@@ -19,8 +23,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#ffffffff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
